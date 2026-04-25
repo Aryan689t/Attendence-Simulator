@@ -1,0 +1,58 @@
+#heading{
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+#info{
+    justify-content: center;
+    text-align: center;
+}
+#inputbox{
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+    gap:30px;
+}
+#sub,#atten,#counduc{
+    text-align: left;
+}
+#sub,#atten,#counduc,.p{
+    position: relative;
+    top:10px;
+}
+#add{
+    position: relative;
+    top: 2px;
+    width:0px;
+}
+#add button{
+    width:20px;
+    height: 20px;
+}
+#show{
+    justify-content: center;
+    text-align: center;
+    position: relative;
+    top: 20px;
+}
+#show.p{
+    text-align: left;
+}
+.card{
+    display: flex;
+   border: 2px solid black;
+   padding: 10px;
+   margin: 10px;
+   justify-content: space-evenly;
+   background: lightgray;
+ color:black;
+}
+#allperc{
+    position: fixed;
+    bottom: 0;
+    background-color: black;
+    color: white;
+    text-align: center;
+    width: 100%;
+}
