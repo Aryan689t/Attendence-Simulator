@@ -9,7 +9,7 @@
 <body>
     <div id="heading"><h1>Attendence Simulator</h1></div>
     <div id="info">
-        <p> Fill classes attended and conducted , Get to know Your attendence , find out the min classes need to attend per subject or overall</p>
+        <p> Fill classes attended and conducted , Get to know Your attendence , find out how many classes u need to attend per subject or overall</p>
     </div>
     <div id="subject_cards">
 
@@ -19,13 +19,13 @@
         <div><p>Add Your subject :  </p></div>
        <div id="sub">
         <p>Subject</p>
-        <input id="subject" placeholder="eg: Mathematics"></div>
+        <input id="subject" placeholder="eg: Mathematics" autocomplete="off"></div>
        <div id="atten">
         <p>Attended</p>
-        <input type="text" id="attended"></div>
+        <input type="number" id="attended" autocomplete="off"></div>
        <div id="counduc">
         <p>Conducted</p>
-        <input type="text" id="conducted"></div>
+        <input type="number" id="conducted" autocomplete="off"></div>
        <div id="add"><button id="addbtn">+</button></div>
     </div>
     <p id="Firstresult"></p>
