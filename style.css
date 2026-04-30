@@ -1,58 +1,289 @@
-#heading{
-    justify-content: center;
-    align-items: center;
-    text-align: center;
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap');
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
-#info{
-    justify-content: center;
-    text-align: center;
+
+:root {
+  --bg: #1a1a1a;
+  --surface: #242424;
+  --surface-2: #2e2e2e;
+  --border: #383838;
+  --text-primary: #f0f0f0;
+  --text-secondary: #9a9a9a;
+  --text-hint: #555;
+  --green: #7fc97f;
+  --green-bg: rgba(127,201,127,0.12);
+  --amber: #e8a838;
+  --amber-bg: rgba(232,168,56,0.12);
+  --red: #e06c6c;
+  --red-bg: rgba(224,108,108,0.12);
+  --radius: 12px;
+  --radius-sm: 8px;
+  --font: 'Inter', sans-serif;
 }
-#inputbox{
-    display: flex;
-    justify-content: center;
-    text-align: center;
-    align-items: center;
-    gap:30px;
+
+body {
+  font-family: var(--font);
+  background: var(--bg);
+  color: var(--text-primary);
+  min-height: 100vh;
+  padding-bottom: 80px;
 }
-#sub,#atten,#counduc{
-    text-align: left;
+
+/* ── Heading ── */
+#heading {
+  text-align: center;
+  padding: 2.5rem 1rem 0.4rem;
 }
-#sub,#atten,#counduc,.p{
-    position: relative;
-    top:10px;
+
+#heading h1 {
+  font-size: 28px;
+  font-weight: 600;
+  color: var(--text-primary);
+  letter-spacing: -0.3px;
 }
-#add{
-    position: relative;
-    top: 2px;
-    width:0px;
+
+/* ── Info ── */
+#info {
+  text-align: center;
+  padding: 0.4rem 1rem 1.75rem;
 }
-#add button{
-    width:20px;
-    height: 20px;
+
+#info p {
+  font-size: 14px;
+  color: var(--text-secondary);
+  max-width: 520px;
+  margin: 0 auto;
+  line-height: 1.6;
 }
-#show{
-    justify-content: center;
-    text-align: center;
-    position: relative;
-    top: 20px;
+
+/* ── Stat cards row ── */
+#subject_cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  max-width: 700px;
+  margin: 0 auto 1.5rem;
+  padding: 0 1rem;
 }
-#show.p{
-    text-align: left;
+
+/* ── Input box ── */
+#inputbox {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  gap: 14px;
+  flex-wrap: wrap;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.5rem;
+  max-width: 700px;
+  margin: 0 auto 1.25rem;
+  position: relative;
 }
-.card{
-    display: flex;
-   border: 2px solid black;
-   padding: 10px;
-   margin: 10px;
-   justify-content: space-evenly;
-   background: lightgray;
- color:black;
+
+#inputbox::before {
+  content: "ADD A SUBJECT";
+  position: absolute;
+  top: 1.25rem;
+  left: 1.5rem;
+  right: 1.5rem;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  color: var(--text-secondary);
+  pointer-events: none;
 }
-#allperc{
-    position: fixed;
-    bottom: 0;
-    background-color: black;
-    color: white;
-    text-align: center;
-    width: 100%;
+
+#inputbox {
+  padding-top: 3rem;
+}
+
+#inputbox > div > p {
+  font-size: 12px;
+  color: var(--text-secondary);
+  margin-bottom: 6px;
+}
+
+#inputbox input {
+  font-family: var(--font);
+  font-size: 14px;
+  color: var(--text-primary);
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 10px 14px;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+#inputbox input::placeholder { color: var(--text-hint); }
+#inputbox input:focus { border-color: #666; }
+
+#sub input  { width: 200px; }
+#atten input, #counduc input { width: 110px; }
+
+#sub, #atten, #counduc { position: static; top: auto; }
+#add { position: static; width: auto; }
+
+#add button,
+#addbtn {
+  font-family: var(--font);
+  font-size: 14px;
+  font-weight: 500;
+  background: var(--text-primary);
+  color: #111;
+  border: none;
+  border-radius: var(--radius-sm);
+  padding: 0 20px;
+  height: 42px;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: opacity 0.15s, transform 0.1s;
+}
+
+#add button:hover, #addbtn:hover  { opacity: 0.85; }
+#add button:active, #addbtn:active { transform: scale(0.97); }
+
+/* ── Show area ── */
+#show {
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 0 1rem;
+  position: static;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+
+#show:empty { display: none; }
+
+#show::before {
+  content: "YOUR SUBJECTS";
+  display: block;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  color: var(--text-secondary);
+  padding: 1.25rem 1.5rem 0.75rem;
+  border-bottom: 1px solid var(--border);
+}
+
+/* ── Card = table row ── */
+.card {
+  display: grid;
+  grid-template-columns: 1.8fr 26px 70px 26px 26px 70px 26px 64px 64px;
+  align-items: center;
+  gap: 6px;
+  padding: 0.85rem 1.5rem;
+  border-bottom: 1px solid var(--border);
+  font-size: 14px;
+  color: var(--text-primary);
+  animation: fadeIn 0.2s ease;
+}
+
+.card:last-child { border-bottom: none; }
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(4px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.card > div:first-child {
+  font-weight: 500;
+  color: var(--text-primary);
+}
+
+.card > div:not(:first-child) {
+  text-align: center;
+  color: var(--text-primary);
+}
+
+/* percentage box */
+.card > div:nth-child(8) {
+  font-weight: 500;
+  text-align: center;
+}
+
+/* +/- buttons */
+.card button {
+  font-family: var(--font);
+  font-size: 15px;
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  width: 26px;
+  height: 26px;
+  cursor: pointer;
+  color: var(--text-secondary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.15s, color 0.15s;
+  padding: 0;
+  line-height: 1;
+}
+
+.card button:hover {
+  background: #3a3a3a;
+  color: var(--text-primary);
+}
+
+/* delete button */
+.card button:last-child {
+  width: auto;
+  padding: 4px 10px;
+  font-size: 11px;
+  color: var(--text-hint);
+  height: 26px;
+  background: none;
+}
+
+.card button:last-child:hover {
+  color: var(--red);
+  border-color: var(--red);
+  background: var(--red-bg);
+}
+
+/* ── Overall % bar ── */
+#allperc {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background: var(--surface);
+  border-top: 1px solid var(--border);
+  color: var(--text-primary);
+  text-align: center;
+  padding: 14px 1rem;
+  font-size: 15px;
+  font-weight: 500;
+  z-index: 100;
+}
+
+/* ── Misc ── */
+#Firstresult {
+  text-align: center;
+  font-size: 13px;
+  color: var(--text-secondary);
+  max-width: 700px;
+  margin: 0.5rem auto;
+  padding: 0 1rem;
+}
+
+button:hover {
+  transform: scale(1.05);
+}
+
+body {
+  padding-bottom: 70px;
 }
