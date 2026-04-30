@@ -12,7 +12,7 @@ addbttn.addEventListener("click",()=>{
     const cndctd=Number(document.getElementById("conducted").value);
 
    
-    if(sub!=""&&(atnd>=0&&cndctd>0)&&(cndctd>atnd)){
+    if(sub!=""&&(atnd>=0&&cndctd>0)&&(cndctd>=atnd)){
         
   if(subject.has(sub)){
         alert("already added");
@@ -46,8 +46,7 @@ addbttn.addEventListener("click",()=>{
         totalattended+=attended;
         totalcounducted+=conducted;
        // allperc(totalattended,totalcounducted);
-                allpercbox.innerText=Number(allperc(totalattended,totalcounducted))+"%";
-
+                
         
 
         const atnpls=document.createElement("button");
@@ -79,8 +78,7 @@ addbttn.addEventListener("click",()=>{
                // allperc(totalattended,totalcounducted);
                 atnbox.innerText=attended;
                 percbox.innerText=percentage(attended,conducted)+"%";
-                                allpercbox.innerText=Number(allperc(totalattended,totalcounducted))+"%";
-
+                                
         })    
         atnmins.addEventListener("click",()=>{
                 attended--;
@@ -92,7 +90,7 @@ saveData();
                   totalattended--;
                // allperc(totalattended,totalcounducted);
                  percbox.innerText=percentage(attended,conducted)+"%";
-                                 allpercbox.innerText=Number(allperc(totalattended,totalcounducted))+"%";
+                                 allpercbox.innerText="Overall Percentage: "+allperc(totalattended,totalcounducted)+"%";
 
         })   
         conpls.addEventListener("click",()=>{
@@ -105,7 +103,7 @@ saveData();
                   totalcounducted++;
                 //allperc(totalattended,totalcounducted);
                 percbox.innerText=percentage(attended,conducted)+"%";
-                                allpercbox.innerText=Number(allperc(totalattended,totalcounducted))+"%";
+                                allpercbox.innerText="Overall Percentage: "+allperc(totalattended,totalcounducted)+"%";
 
         }) 
          conmins.addEventListener("click",()=>{
@@ -122,7 +120,7 @@ saveData();
                 //allperc(totalattended,totalcounducted);
                 condbox.innerText=conducted;
                 percbox.innerText=percentage(attended,conducted)+"%";
-                                allpercbox.innerText=Number(allperc(totalattended,totalcounducted))+"%";
+                                allpercbox.innerText="Overall Percentage: "+allperc(totalattended,totalcounducted)+"%";
 
         })       
        
@@ -154,7 +152,7 @@ saveData();
                 totalattended -= attended;
                 totalcounducted -= conducted;
                // allperc(totalattended,totalcounducted);
-                                allpercbox.innerText=Number(allperc(totalattended,totalcounducted))+"%";
+                                allpercbox.innerText="Overall Percentage: "+allperc(totalattended,totalcounducted)+"%";
 
         })
                
@@ -168,11 +166,11 @@ saveData();
 })
 
 function percentage (attended,conducted){
-        return Math.round((attended/conducted)*100);
+        return ((attended/conducted)*100).toFixed(2);
 }
 function allperc(x,y){
         if(y === 0) return 0;
-        return Math.round((x/y)*100);
+        return ((x/y)*100).toFixed(2);
 }
 function showsaved(sub,atnd,cndctd){
 const card=document.createElement("div");
@@ -194,7 +192,7 @@ const card=document.createElement("div");
         totalattended+=attended;
         totalcounducted+=conducted;
        // allperc(totalattended,totalcounducted);
-                allpercbox.innerText=Number(allperc(totalattended,totalcounducted))+"%";
+                allpercbox.innerText="Overall Percentage: "+allperc(totalattended,totalcounducted)+"%";
 
         
 
@@ -227,7 +225,7 @@ const card=document.createElement("div");
                // allperc(totalattended,totalcounducted);
                 atnbox.innerText=attended;
                 percbox.innerText=percentage(attended,conducted)+"%";
-                                allpercbox.innerText=Number(allperc(totalattended,totalcounducted))+"%";
+                                allpercbox.innerText="Overall Percentage: "+allperc(totalattended,totalcounducted)+"%";
 
         })    
         atnmins.addEventListener("click",()=>{
@@ -240,7 +238,7 @@ const card=document.createElement("div");
                   totalattended--;
                // allperc(totalattended,totalcounducted);
                  percbox.innerText=percentage(attended,conducted)+"%";
-                                 allpercbox.innerText=Number(allperc(totalattended,totalcounducted))+"%";
+                                 allpercbox.innerText="Overall Percentage: "+allperc(totalattended,totalcounducted)+"%";
 
         })   
         conpls.addEventListener("click",()=>{
@@ -253,7 +251,7 @@ const card=document.createElement("div");
                   totalcounducted++;
                 //allperc(totalattended,totalcounducted);
                 percbox.innerText=percentage(attended,conducted)+"%";
-                                allpercbox.innerText=Number(allperc(totalattended,totalcounducted))+"%";
+                                allpercbox.innerText="Overall Percentage: "+allperc(totalattended,totalcounducted)+"%";
 
         }) 
          conmins.addEventListener("click",()=>{
@@ -270,7 +268,7 @@ const card=document.createElement("div");
                 //allperc(totalattended,totalcounducted);
                 condbox.innerText=conducted;
                 percbox.innerText=percentage(attended,conducted)+"%";
-                                allpercbox.innerText=Number(allperc(totalattended,totalcounducted))+"%";
+                                allpercbox.innerText="Overall Percentage: "+allperc(totalattended,totalcounducted)+"%";
 
         })       
        
@@ -297,7 +295,7 @@ const card=document.createElement("div");
                 totalattended -= attended;
                 totalcounducted -= conducted;
                // allperc(totalattended,totalcounducted);
-                                allpercbox.innerText=Number(allperc(totalattended,totalcounducted))+"%";
+                                allpercbox.innerText="Overall Percentage: "+allperc(totalattended,totalcounducted)+"%";
 subject.add(sub);
         })  
 }
